@@ -6,8 +6,8 @@ on:
   push:
     branches:
       - master
-#  watch:
-#    types: [started]
+  watch:
+    types: [started]
 #  schedule:
 #    - cron: '0 4 * * *'
 
@@ -45,11 +45,11 @@ jobs:
           sed '$a\RELEASE_KEY_ALIAS=legado'                 $GITHUB_WORKSPACE/gradle.properties -i
           sed '$a\RELEASE_STORE_PASSWORD=gedoor_legado'     $GITHUB_WORKSPACE/gradle.properties -i
           sed '$a\RELEASE_KEY_PASSWORD=gedoor_legado'       $GITHUB_WORKSPACE/gradle.properties -i
-      - name: Apk Live Together
-        run: |
-          echo "设置apk共存"
-          sed "s/'.release'/'.releaseA'/" $GITHUB_WORKSPACE/app/build.gradle  -i
-          sed 's/.release/.releaseA/'     $GITHUB_WORKSPACE/app/google-services.json -i
+     # - name: Apk Live Together
+     #   run: |
+      #    echo "设置apk共存"
+       #   sed "s/'.release'/'.releaseA'/" $GITHUB_WORKSPACE/app/build.gradle  -i
+        #  sed 's/.release/.releaseA/'     $GITHUB_WORKSPACE/app/google-services.json -i
       - name: Build With Gradle
         run: |
           echo "开始进行release构建"
